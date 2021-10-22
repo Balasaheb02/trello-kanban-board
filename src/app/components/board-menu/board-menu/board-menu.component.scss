@@ -1,0 +1,39 @@
+.board_menu{
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu_main{
+    display: flex;
+}
+
+.icon-public:before{
+    content: "\e95a";
+}
+
+
+.icon-public-menu:before{
+    content: "\e952";
+}
+
+.button{
+    // background-color: #4199ce;
+
+    // color: #fff;
+    // align-items: center;
+    // border: none;
+    // border-radius: 3px;
+    // box-sizing: border-box;
+    // cursor: pointer;
+    // display: inline-flex;
+    // font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+    // font-size: 14px;
+    // font-weight: 400;
+    // justify-content: center;
+    // line-height: 20px;
+    // padding: 6px 12px;
+
+    // transition-duration: 85ms;
+    // transition-property: background-color,border-color,box-shadow;
+    // transition-timing-function: ease;
+}
