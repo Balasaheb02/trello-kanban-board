@@ -3,8 +3,34 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 40px;
+    min-height: 50px;
     max-height: 40px;
+    padding:10px
+}
+
+.menu{
+    height:30px;
+
+}
+
+.Route_link{
+    background: 0 0;
+    border-radius: 3px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    height: 15px;
+    line-height: 15px;
+    margin: 0 4px 5px 0;
+    padding: 8px;
+    text-decoration: none; 
+}
+
+.Route_link:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    outline: 0;
+    height: 30px;
 }
 
 .logo{
@@ -15,6 +41,11 @@
 
 .login{
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+}
+
+.buttons{
+    display: flex;
+
 }
 
 .button{
@@ -29,26 +60,43 @@
     font-weight: bold;
     height: 32px;
     line-height: 32px;
-    padding: 0 4px 0 0;
+    padding: 0 12px;
     white-space: nowrap;
+    margin-right: 10px;
+}
+
+.button:hover{
+    box-shadow: none;
+    color: #FFFFFF;
+  
 }
 
 .signup{
     background: linear-gradient(to bottom, #61BD4F 0%, #5AAC44 100%);
 }
 
-.logo::after {
-    content: '';
-    background-image: url(https://a.trellocdn.com/prgb/dist/images/header-logo-spirit.d947df93bc055849898e.gif);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 100px;
-    height: 100px;
+.login:hover{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
 }
+
+.signup:hover{
+    background: linear-gradient(to bottom, #5AAC44 0%, #519839 100%);
+}
+
+
+
+// .logo::after {
+//     content: '';
+//     background-image: url(https://a.trellocdn.com/prgb/dist/images/header-logo-spirit.d947df93bc055849898e.gif);
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     background-position: center;
+//     display: block;
+//     position: absolute;
+//     top: 0;
+//     width: 30px;
+//     height: 30px;
+// }
 
 .logo::before {
     content: '';
@@ -60,5 +108,9 @@
     position: absolute;
     top: 0;
     width: 100px;
-    height: 100px;
+    height: 50px;
+}
+
+.logo :hover{
+    opacity: 0;
 }
