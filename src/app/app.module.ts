@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { KanbanDashboardModule } from './Home/kanban-dashboard/kanban-dashboard.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    KanbanDashboardModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
