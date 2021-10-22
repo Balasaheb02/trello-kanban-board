@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Add Task</h1>
+<div class="menu" [formGroup]="taskForm">
+    <div>
+        <mat-form-field>
+            <input matInput placeholder="Task Name" formControlName="name">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Task Status</mat-label>
+            <mat-select formControlName="task">
+                <mat-option *ngFor="let status of statusData" [value]="status.value">
+                    {{status.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Label</mat-label>
+            <mat-select formControlName="label">
+                <mat-option *ngFor="let label of lables" [value]="label.value">
+                    {{label.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <div mat-dialog-actions>
+            <a mat-flat-button routerLink=".">Cancel</a>
+            <button mat-flat-button color="warn" (click) = "submitForm()">Submit</button>
+        </div>
+    </div>
+</div>

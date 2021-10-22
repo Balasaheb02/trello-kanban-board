@@ -1,1 +1,76 @@
 <app-topbar></app-topbar>
+<div class="banner">
+    <p>Visually collaborate with anyone, anywhere. <span><button class="button_constant">Sign up for
+                free</button></span>
+    </p>
+</div>
+<app-board-menu></app-board-menu>
+<div class="container_main" cdkDropListGroup>
+    <div class="board">
+        <div class="title">To Do</div>
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>
+                <div class="card_label" *ngIf="item.label == 'cp'">
+                    <span class="card_label_color">
+                    </span>
+                </div>
+                <div class="card_label" *ngIf="item.label == 'fault'">
+                    <span class="card_label_data card_label_color_red">
+                    </span>
+                </div>
+                <p>{{item.name}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="board">
+        <div class="title">Development</div>
+        <div cdkDropList #developmentList="cdkDropList" [cdkDropListData]="development" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of development" cdkDrag>
+                <div class="card_label" *ngIf="item.label == 'cp'">
+                    <span class="card_label_color">
+                    </span>
+                </div>
+                <div class="card_label" *ngIf="item.label == 'fault'">
+                    <span class="card_label_data card_label_color_red">
+                    </span>
+                </div>
+                <p>{{item.name}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="board">
+        <div class="title">Testing</div>
+        <div cdkDropList #testingList="cdkDropList" [cdkDropListData]="testing" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of testing" cdkDrag>
+                <div class="card_label" *ngIf="item.label == 'cp'">
+                    <span class="card_label_data card_label_color">
+                    </span>
+                </div>
+                <div class="card_label" *ngIf="item.label == 'fault'">
+                    <span class="card_label_data card_label_color_red">
+                    </span>
+                </div>
+                <p>{{item.name}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="board">
+        <div class="title">Done</div>
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>
+                <div class="card_label" *ngIf="item.label == 'cp'">
+                    <span class="card_label_color">
+                    </span>
+                </div>
+                <div class="card_label" *ngIf="item.label == 'fault'">
+                    <span class="card_label_data card_label_color_red">
+                    </span>
+                </div>
+                <p>{{item.name}} </p>
+            </div>
+        </div>
+    </div>
