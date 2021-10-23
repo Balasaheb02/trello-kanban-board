@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog'
-import {AddTasksComponent} from '../../../Home/kanban-dashboard/add-tasks/add-tasks.component'
+import { FormControl } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, startWith, takeUntil, withLatestFrom, filter } from 'rxjs/operators';
+import { DataService } from 'src/app/services/data.service';
+import { AddTasksComponent } from '../../../Home/kanban-dashboard/add-tasks/add-tasks.component'
+
 
 @Component({
   selector: 'app-board-menu',
@@ -9,13 +15,56 @@ import {AddTasksComponent} from '../../../Home/kanban-dashboard/add-tasks/add-ta
 })
 export class BoardMenuComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
 
-  ngOnInit() {
+  taskCtrl: FormControl;
+  filteredTask: BehaviorSubject<any[]> = new BehaviorSubject([])
+  filteredTask$: Observable<any[]> = this.filteredTask.asObservable();
+  options = [];
+
+  filterOptions: Observable<any[]>
+
+  constructor(private dialog: MatDialog,
+    private dataService: DataService,
+    private dialogRef: MatDialogRef<AddTasksComponent>) {
+    this.taskCtrl = new FormControl();
   }
 
-  openDialog(){
+  ngOnInit() {
+
+  
+
+    this.dataService.masterData$.subscribe(
+      res => {
+        if (this.dataService.data.value.length != 0) {
+          this.options.push(res)
+          this.filteredTask.next(res);
+        }
+      }
+    )
+
+  }
+
+  searchTask() {
+    this.dataService.data.next(this.filterItems(this.dataService.masterData.value, this.taskCtrl.value))
+    console.log(this.dataService.data)
+  }
+
+  filterItems(arr, query) {
+    return arr.filter(el => el.name.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60px";
     this.dialog.open(AddTasksComponent);
   }
 
+  onClose() {
+    this.dialogRef.close();
+  }
+
+
+
 }
+

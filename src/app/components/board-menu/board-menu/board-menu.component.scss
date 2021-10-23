@@ -1,39 +1,103 @@
 .board_menu{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding:10px;
+}
+
+.button-group{
+    display: flex;
 }
 
 .menu_main{
     display: flex;
+    
 }
 
-.icon-public:before{
-    content: "\e95a";
+.heading{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 32px;
+    padding: 0 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: white;
+    margin: 0;
 }
 
-
-.icon-public-menu:before{
-    content: "\e952";
-}
 
 .button{
-    // background-color: #4199ce;
-
-    // color: #fff;
-    // align-items: center;
-    // border: none;
-    // border-radius: 3px;
-    // box-sizing: border-box;
-    // cursor: pointer;
-    // display: inline-flex;
-    // font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
-    // font-size: 14px;
-    // font-weight: 400;
-    // justify-content: center;
-    // line-height: 20px;
-    // padding: 6px 12px;
-
-    // transition-duration: 85ms;
-    // transition-property: background-color,border-color,box-shadow;
-    // transition-timing-function: ease;
+    background-color: #0091cc;
+    color: #fff;
+    display: flex;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 2px 12px;
+    margin-right: 10px;
+    transition-duration: 85ms;
+    transition-property: background-color,border-color,box-shadow;
+    transition-timing-function: ease;
 }
+
+
+.padding_top{
+    padding: 8px 20px;
+}
+
+.p_r_sm{
+    padding-right: 3px;
+}
+
+.button-group{
+    padding-top: 5px;
+}
+
+.button img {
+    padding-top: 2px;
+}
+
+@media screen and (min-width: 768px) {
+    .menu_main{
+        max-height: 40px;
+    }
+  }
+
+@media screen and (max-width: 768px) {
+    .board_menu{
+        flex-wrap: wrap;
+    }
+
+    .heading, .button{
+        width: 100%;
+    }
+
+    .button{
+        margin: 10px;
+        height: 40px;
+
+    }
+    .button-group{
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+    form{
+        align-self: center;
+    }
+
+    .menu_main{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+  
+  }
+  

@@ -1,14 +1,27 @@
 <div class="board_menu">
-    <div class="menu_main">
-        <p>Kanban Board</p>
-        <div></div>
-        <button class="icon-public">Public</button>
-        <div class="user_circle">
-        </div>
+  <div class="menu_main">
+    <p class="heading">Kanban Board</p>
+    <div></div>
+    <button class=" button"> <img src="../../../../assets/images/gloab.png"> Public</button>
+    <button class=" button" (click)="openDialog()">Add Task</button>
+    <div class="user_circle">
     </div>
-    <div>
-        <button class="icon-public button">Public</button>
-        <button class="icon-public-menu button">Show menu</button>
-        <button class="icon-public-menu button" (click) = "openDialog()" >Add Task</button>
-    </div>
+    <form class="form">
+      <mat-form-field class="width">
+        <input matInput placeholder="search task" aria-label="Search Task" [matAutocomplete]="auto" [formControl]="taskCtrl" required matTooltip="Type to filter the Country list"
+            matTooltipPosition="after">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let task of filteredTask | async" [value]="task.name">
+            <span>{{ task.name }} </span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <button class=" button padding_top" (click)="searchTask()" > Search</button>
+  </div>
+  <div class="button-group">
+    <button class=" button padding_top"> <img src="../../../../assets/images/filter.png"> Filter</button>
+    <ng-content>
+    </ng-content>
+  </div>
 </div>
