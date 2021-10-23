@@ -85,18 +85,9 @@
 
 
 
-// .logo::after {
-//     content: '';
-//     background-image: url(https://a.trellocdn.com/prgb/dist/images/header-logo-spirit.d947df93bc055849898e.gif);
-//     background-repeat: no-repeat;
-//     background-size: contain;
-//     background-position: center;
-//     display: block;
-//     position: absolute;
-//     top: 0;
-//     width: 30px;
-//     height: 30px;
-// }
+.logo:hover {
+    opacity: 0.9;
+}
 
 .logo::before {
     content: '';
@@ -109,8 +100,6 @@
     top: 0;
     width: 100px;
     height: 50px;
-}
+    opacity: 0.4;
+} 
 
-.logo :hover{
-    opacity: 0;
-}

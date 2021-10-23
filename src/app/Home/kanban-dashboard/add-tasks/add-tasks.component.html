@@ -1,3 +1,4 @@
+<div>
 <h1 mat-dialog-title>Add Task</h1>
 <div class="menu" [formGroup]="taskForm">
     <div>
@@ -27,8 +28,9 @@
     </div>
     <div>
         <div mat-dialog-actions>
-            <a mat-flat-button routerLink=".">Cancel</a>
+            <a mat-flat-button (click)="onClose()">Cancel</a>
             <button mat-flat-button color="warn" (click) = "submitForm()">Submit</button>
         </div>
     </div>
+</div>
 </div>

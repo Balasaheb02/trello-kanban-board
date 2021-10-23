@@ -14,40 +14,43 @@ export interface data {
   styleUrls: ['./kanban-dashboard.component.scss']
 })
 export class KanbanDashboardComponent implements OnInit {
+  todo: any[] = [];
+  done: any[] = [];
+  development: any[] = [];
+  testing: any[] = [];
+  showFiller = true;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,) { }
 
   ngOnInit() {
-
     this.dataService.data$.subscribe(
-      response => { this.todo.push(response) }
+      response => {
+        this.reset();
+       response.forEach(element => {
+        this.separationData(element)
+       });
+      }
     )
 
+    // this.dataService.sidenav$.subscribe(
+    //   response => {
+    //     if (response == true) {
+    //       drawer.toggle()
+    //     }
+    //   }
+    // )
   }
-
-  todo: any[] = [
-    { name: 'Get to work', label: 'cp', task: 'development' },
-    { name: 'Pick up groceries', label: 'cp', task: 'development' },
-    { name: 'Go home', label: 'cp', task: 'development' },
-    { name: 'Fall asleep', label: 'fault', task: 'development' },
-  ];
-
-  done = [
-    { name: 'Get to work 1', label: 'cp', task: 'development' },
-    { name: 'Pick up groceries 2', label: 'cp', task: 'development' },
-    { name: 'Go home 3', label: 'cp', task: 'development' },
-    { name: 'Fall asleep 4', label: 'fault', task: 'development' },
-  ];
-
-  development = [{ name: 'Get to work 5', label: 'cp', task: 'development' },
-  { name: 'Pick up groceries 4', label: 'cp', task: 'development' },
-  { name: 'Go home' , label: 'cp', task: 'development' },
-  { name: 'Fall asleep', label: 'fault', task: 'development' },];
-
-  testing = [{ name: 'Get to work', label: 'cp', task: 'development' },
-  { name: 'Pick up groceries', label: 'cp', task: 'development' },
-  { name: 'Go home', label: 'cp', task: 'development' },
-  { name: 'Fall asleep', label: 'fault', task: 'development' },];
+  separationData(data) {
+    if (data.task == 'todo') {
+      this.todo.push(data);
+    } else if (data.task == 'development') {
+      this.development.push(data)
+    } else if (data.task == 'testing') {
+      this.testing.push(data)
+    } else if (data.task == 'done') {
+      this.done.push(data)
+    }
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -58,6 +61,13 @@ export class KanbanDashboardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  reset(){
+    this.todo = [];
+    this.done = [];
+    this.development = [];
+    this.testing = [];
   }
 
 }

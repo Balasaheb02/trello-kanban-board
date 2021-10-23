@@ -1,0 +1,58 @@
+<div class="board-menu-container">
+    <div class="board-menu-tab-content">
+        <div class="board-menu-header board-menu-header.is-in-frame">
+            <div class="board-menu-header-content">
+                <h3 class="board-menu-header-title js-board-menu-title-text">Menu</h3>
+                <a class="board-menu-header-close-button icon-lg icon-close js-hide-sidebar" href="#"
+                    title="Close the board menu."><img src="../../../../assets/images/cross.png" (click)="closeSideNave(true)" width="30px" height="30px" alt="" srcset=""></a>  
+            </div>
+            <hr >
+          
+        </div>
+        <div class="board-menu-content u-fancy-scrollbar js-board-menu-content-wrapper">
+            <div class="board-menu-content-frame">
+                <p class="error js-file-too-large data_template">File too large. 10mb limit.
+                </p>
+                <ul class="board-menu-navigation">
+                    <li class="board-menu-navigation-item"><a
+                            class="board-menu-navigation-item-link js-about-this-board" href="#"><span
+                                class="board-menu-navigation-item-link-icon icon-lg-menu icon-board"></span> <img class="p_r_sm" src="../../../../assets/images/dashboard.png" alt="" srcset=""> About this
+                            board<div
+                                class="board-menu-navigation-item-link-summary board-menu-about-this-board-summary hide">
+                                &nbsp;Add a description to your board</div></a></li>
+                    <li class="board-menu-navigation-item"><a
+                            class="board-menu-navigation-item-link js-open-card-filter" href="#"><span
+                                class="icon-sm icon-search icon-lg-menu board-menu-navigation-item-link-icon"></span> <img class="p_r_sm" src="../../../../assets/images/search.png" alt="" srcset=""> Search
+                            cards</a></li>
+                    <li class="board-menu-navigation-item"><a class="board-menu-navigation-item-link js-open-more"
+                            href="#"><span
+                                class="icon-sm icon-overflow-menu-horizontal icon-lg-menu board-menu-navigation-item-link-icon"></span> <img class="p_t_sm" src="../../../../assets/images/menu-2.png" alt="" srcset=""> More</a>
+                    </li>
+                </ul>
+                <hr><a class="board-menu-section-header js-open-activity" style="display: flex; align-items: center" href="#"><span
+                        class="board-menu-section-header-icon icon-lg icon-activity"><img src="../../../../assets/images/activivty.png" class="p_r_sm" alt="" srcset=""></span><span
+                        class="board-menu-section-header-title">Activity</span><span
+                        class="board-menu-section-header-count js-unread-activity-count"></span></a>
+                <div class="js-menu-action-list">
+                    <div class="phenom mod-attachment-type" *ngFor="let data of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]">
+                        <div class="phenom-creator">
+                            <div class="member js-show-mem-menu" ><img src="../../../../assets/images/user2.png" width="34px" height="40px" alt="" srcset=""></div>
+                        </div>
+                        <div class="list_main">
+                        <div class="phenom-desc"><span class="inline-member js-show-mem-menu"
+                                ><span class="u-font-weight-bold">Andrew
+                                    Hyde</span></span> made this board visible to the public</div>
+                        <div class="phenom-meta quiet"><span class="date js-hide-on-sending past"
+                                dt="2012-03-13T15:21:39.299Z" href="" title="13 March 2012 20:51">13 Mar 2012 at
+                                20:51</span><span class="js-spinner hide"><span
+                                    class="spinner spinner--inline mod-left small"></span> Sending…&nbsp;</span></div>
+                                </div>
+                    </div>
+                   
+                </div><a class="show-more js-fill-activity-button js-open-activity" href="#">View all activity…</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

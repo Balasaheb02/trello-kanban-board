@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
 import { DataService } from 'src/app/services/data.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 
 export interface status {
   value: string;
@@ -20,7 +22,19 @@ export interface data {
 })
 export class AddTasksComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private dataService: DataService) { }
+  lables: status[] = [
+    { value: 'cp', viewValue: 'CP' },
+    { value: 'fault', viewValue: 'Fault' }
+  ]
+
+  statusData: status[] = [
+    { value: 'todo', viewValue: 'To do' },
+    { value: 'development', viewValue: 'Development' },
+    { value: 'testing', viewValue: 'Testing' },
+    { value: 'done', viewValue: 'Done' }
+  ];
+
+  constructor(private fb: FormBuilder, private dataService: DataService, private dialogRef: MatDialogRef<AddTasksComponent>) { }
 
   taskForm = this.fb.group({
     name: [''],
@@ -31,19 +45,14 @@ export class AddTasksComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitForm(){
-    this.dataService.data.next(this.taskForm.value)
+  submitForm() {
+    const currentValue =this.dataService.data.value;
+    const updatedValue = [...currentValue, this.taskForm.value];
+    this.dataService.data.next(updatedValue);
+    this.dataService.masterData.next(updatedValue);
+    this.dialogRef.close();
   }
-
-  lables: status[] = [
-    {value:'cp', viewValue:'CP'},
-    {value: 'fault', viewValue:'Fault'}
-  ]
-
-  statusData: status[] = [
-    {value: 'todo', viewValue: 'To do'},
-    {value: 'development', viewValue: 'Development'},
-    {value: 'testing', viewValue: 'Testing'},
-    {value: 'Done', viewValue: 'Done'}
-  ];
+  onClose() {
+    this.dialogRef.close();
+  }
 }

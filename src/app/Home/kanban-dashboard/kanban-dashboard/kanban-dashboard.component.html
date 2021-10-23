@@ -1,22 +1,24 @@
+
 <app-topbar></app-topbar>
 <div class="banner">
     <p>Visually collaborate with anyone, anywhere. <span><button class="button_constant">Sign up for
                 free</button></span>
     </p>
 </div>
-<app-board-menu></app-board-menu>
+<app-board-menu> <button class=" button padding_top" (click)="drawer.toggle()"><img class="p_r_sm" src="../../../../assets/images/menu.png"> Show
+    menu</button></app-board-menu>
+<div class="main">
 <div class="container_main" cdkDropListGroup>
     <div class="board">
         <div class="title">To Do</div>
         <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" class="example-list"
             (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor="let item of todo" cdkDrag>
-                <div class="card_label" *ngIf="item.label == 'cp'">
-                    <span class="card_label_color">
-                    </span>
-                </div>
-                <div class="card_label" *ngIf="item.label == 'fault'">
-                    <span class="card_label_data card_label_color_red">
+                <div class="card_label" >
+                    <span class="card_label_color card_label_data" [ngClass]="{
+                        'card_label_color': item.label == 'cp',
+                        'card_label_color_red': item.label == 'fault'
+                    }">
                     </span>
                 </div>
                 <p>{{item.name}} </p>
@@ -28,12 +30,11 @@
         <div cdkDropList #developmentList="cdkDropList" [cdkDropListData]="development" class="example-list"
             (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor="let item of development" cdkDrag>
-                <div class="card_label" *ngIf="item.label == 'cp'">
-                    <span class="card_label_color">
-                    </span>
-                </div>
-                <div class="card_label" *ngIf="item.label == 'fault'">
-                    <span class="card_label_data card_label_color_red">
+                <div class="card_label" >
+                    <span class="card_label_color card_label_data" [ngClass]="{
+                        'card_label_color': item.label == 'cp',
+                        'card_label_color_red': item.label == 'fault'
+                    }">
                     </span>
                 </div>
                 <p>{{item.name}} </p>
@@ -45,12 +46,11 @@
         <div cdkDropList #testingList="cdkDropList" [cdkDropListData]="testing" class="example-list"
             (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor="let item of testing" cdkDrag>
-                <div class="card_label" *ngIf="item.label == 'cp'">
-                    <span class="card_label_data card_label_color">
-                    </span>
-                </div>
-                <div class="card_label" *ngIf="item.label == 'fault'">
-                    <span class="card_label_data card_label_color_red">
+                <div class="card_label" >
+                    <span class="card_label_color card_label_data" [ngClass]="{
+                        'card_label_color': item.label == 'cp',
+                        'card_label_color_red': item.label == 'fault'
+                    }">
                     </span>
                 </div>
                 <p>{{item.name}} </p>
@@ -62,15 +62,23 @@
         <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" class="example-list"
             (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor="let item of done" cdkDrag>
-                <div class="card_label" *ngIf="item.label == 'cp'">
-                    <span class="card_label_color">
-                    </span>
-                </div>
-                <div class="card_label" *ngIf="item.label == 'fault'">
-                    <span class="card_label_data card_label_color_red">
+                <div class="card_label" >
+                    <span class="card_label_color card_label_data" [ngClass]="{
+                        'card_label_color': item.label == 'cp',
+                        'card_label_color_red': item.label == 'fault'
+                    }">
                     </span>
                 </div>
                 <p>{{item.name}} </p>
             </div>
         </div>
     </div>
+</div>
+<div class="menu_section">
+    <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+            <app-side-menu></app-side-menu>
+        </mat-drawer>
+      </mat-drawer-container>
+</div>
+</div>
