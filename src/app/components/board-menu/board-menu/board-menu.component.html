@@ -5,8 +5,9 @@
     <button class=" button"> <img src="../../../../assets/images/gloab.png"> Public</button>
     <button class=" button" (click)="openDialog()">Add Task</button>
     <div class="user_circle">
+      <img class="p_r_sm" src="../../../../assets/images/user.png" width="70px" height="40px">
     </div>
-    <form class="form">
+    <form class="form p_r_sm">
       <mat-form-field class="width">
         <input matInput placeholder="search task" aria-label="Search Task" [matAutocomplete]="auto" [formControl]="taskCtrl" required matTooltip="Type to filter the Country list"
             matTooltipPosition="after">

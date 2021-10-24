@@ -55,12 +55,25 @@
     padding-right: 3px;
 }
 
+.form{
+
+    margin-right: 20px;
+}
+
 .button-group{
     padding-top: 5px;
 }
 
+.button-group > .button{
+    min-height:40px
+}
+
 .button img {
     padding-top: 2px;
+}
+
+.p_r_sm{
+    padding-right: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -72,6 +85,7 @@
 @media screen and (max-width: 768px) {
     .board_menu{
         flex-wrap: wrap;
+        margin: 0 21px 0 0;
     }
 
     .heading, .button{
@@ -81,11 +95,12 @@
     .button{
         margin: 10px;
         height: 40px;
-
+        margin-right: -11px;
     }
     .button-group{
         display: flex;
         flex-wrap: wrap;
+        width: 100%;
       }
 
     form{

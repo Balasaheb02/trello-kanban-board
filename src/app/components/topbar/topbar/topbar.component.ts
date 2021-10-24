@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopbarComponent implements OnInit {
 
+  showList: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showMenu(){
+    this.showList = !this.showList
   }
 
 }

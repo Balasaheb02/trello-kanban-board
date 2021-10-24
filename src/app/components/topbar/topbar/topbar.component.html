@@ -1,4 +1,5 @@
 <div class="header">
+
     <div class="menu">
         <a class="Route_link clickable">Home</a>
         <a class="Route_link clickable">Tour</a>
@@ -15,3 +16,32 @@
         </button>
     </div>
 </div>
+
+
+<div class="responsive_menu">
+
+    <img src="../../../../assets/images/menu1.png" width="37px" height="33px" (click)="showMenu()">
+
+    <img src="../../../../assets/images/logo.png" width="70px" height="30px">
+
+    <img src="../../../../assets/images/user1.jpg" width="40px" height="38px" [matMenuTriggerFor]="menuRes">
+</div>
+
+<ul class="topbarList" *ngIf="showList">
+    <li class="control_menu">Home</li>
+    <li class="control_menu">Tour</li>
+    <li class="control_menu">Blog</li>
+</ul>
+
+<mat-menu #menuRes="matMenu" class="add_menu tooltip-top" style="width: 180px !important;">
+    <div class="add clickable d-flex" mat-menu-item (click)="$event.stopPropagation();">
+        <button class="signup button clickable">
+            Sign up
+        </button>
+    </div>
+    <div class="add clickable d-flex" mat-menu-item (click)="$event.stopPropagation();">
+        <button class="login button clickable responsive_button">
+            Log in
+        </button>
+    </div>
+</mat-menu>

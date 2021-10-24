@@ -16,8 +16,7 @@
   margin: 0;
 }
 
-
-.button{
+.button {
   background-color: #0091cc;
   color: #fff;
   display: flex;
@@ -32,20 +31,20 @@
   padding: 2px 12px;
   margin-right: 10px;
   transition-duration: 85ms;
-  transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color, border-color, box-shadow;
   transition-timing-function: ease;
 }
 
-.padding_top{
+.padding_top {
   padding: 8px 20px;
 }
 
-.menu{
+.menu {
   width: 100%;
   display: flex;
 }
 
-.menu_section{
+.menu_section {
   display: flex;
   /* background-color: #277abf; */
   padding-left: 10px;
@@ -62,9 +61,7 @@
   display: flex;
   background-color: #277abf;
   padding-left: 10px;
-
 }
-
 
 .card_label_data {
   float: left;
@@ -195,20 +192,25 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-
 @media screen and (max-width: 768px) {
   .container_main {
     width: 100%;
     flex-wrap: wrap;
   }
-  .board{
+  .board {
     margin-bottom: 20px;
   }
 
+  .button {
+    margin: 10px;
+    height: 40px;
+    margin-right: -11px;
+    width: 100%
+  }
 }
 
 @media screen and (min-width: 768px) {
-  .banner{
+  .banner {
     height: 45px;
   }
 }
