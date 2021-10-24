@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { DataService } from 'src/app/services/data.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
@@ -37,9 +37,9 @@ export class AddTasksComponent implements OnInit {
   constructor(private fb: FormBuilder, private dataService: DataService, private dialogRef: MatDialogRef<AddTasksComponent>) { }
 
   taskForm = this.fb.group({
-    name: [''],
-    task: [''],
-    label: [''],
+    name: ['', [Validators.required]],
+    task: ['', [Validators.required]],
+    label: ['', [Validators.required]],
   })
 
   ngOnInit() {

@@ -4,6 +4,9 @@
     <div>
         <mat-form-field>
             <input matInput placeholder="Task Name" formControlName="name">
+            <mat-error *ngIf="taskForm?.get('name').hasError('required')">
+                Task name is required
+              </mat-error>
         </mat-form-field>
     </div>
     <div>
@@ -14,6 +17,9 @@
                     {{status.viewValue}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="taskForm?.get('task').hasError('required')">
+                Task name is required
+              </mat-error>
         </mat-form-field>
     </div>
     <div>
@@ -24,12 +30,15 @@
                     {{label.viewValue}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="taskForm?.get('label').hasError('required')">
+                Task name is required
+              </mat-error>
         </mat-form-field>
     </div>
     <div>
         <div mat-dialog-actions>
             <a mat-flat-button (click)="onClose()">Cancel</a>
-            <button mat-flat-button color="warn" (click) = "submitForm()">Submit</button>
+            <button mat-flat-button color="warn"  [disabled]="taskForm?.invalid" (click) = "submitForm()">Submit</button>
         </div>
     </div>
 </div>

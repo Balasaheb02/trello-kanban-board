@@ -5,7 +5,7 @@
                 free</button></span>
     </p>
 </div>
-<app-board-menu> <button class=" button padding_top" (click)="drawer.toggle()"><img class="p_r_sm" src="../../../../assets/images/menu.png"> Show
+<app-board-menu> <button class=" button padding_top" (click)="drawer.toggle()" #togglebutton><img class="p_r_sm" src="../../../../assets/images/menu.png"> Show
     menu</button></app-board-menu>
 <div class="main">
 <div class="container_main" cdkDropListGroup>
@@ -77,7 +77,10 @@
 <div class="menu_section">
     <mat-drawer-container class="example-container" autosize>
         <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
-            <app-side-menu></app-side-menu>
+            <app-side-menu>
+                <img src="../../../../assets/images/cross.png" (click)="closeSideNave()" width="30px"
+                height="30px" alt="" srcset="">
+            </app-side-menu>
         </mat-drawer>
       </mat-drawer-container>
 </div>

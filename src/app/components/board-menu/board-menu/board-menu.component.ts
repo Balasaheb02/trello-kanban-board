@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { map, startWith, takeUntil, withLatestFrom, filter } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 import { AddTasksComponent } from '../../../Home/kanban-dashboard/add-tasks/add-tasks.component'
@@ -22,6 +22,7 @@ export class BoardMenuComponent implements OnInit {
   options = [];
 
   filterOptions: Observable<any[]>
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(private dialog: MatDialog,
     private dataService: DataService,
@@ -31,9 +32,11 @@ export class BoardMenuComponent implements OnInit {
 
   ngOnInit() {
 
-  
 
-    this.dataService.masterData$.subscribe(
+
+    this.dataService.masterData$.pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe(
       res => {
         if (this.dataService.data.value.length != 0) {
           this.options.push(res)
@@ -64,7 +67,10 @@ export class BoardMenuComponent implements OnInit {
     this.dialogRef.close();
   }
 
-
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete
+  }
 
 }
 

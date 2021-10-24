@@ -1,5 +1,7 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 
 export interface data {
@@ -19,26 +21,23 @@ export class KanbanDashboardComponent implements OnInit {
   development: any[] = [];
   testing: any[] = [];
   showFiller = true;
+  
+  @ViewChild('togglebutton', { static: true }) togglebutton;
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(private dataService: DataService,) { }
 
   ngOnInit() {
-    this.dataService.data$.subscribe(
+    this.dataService.data$.pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe(
       response => {
         this.reset();
-       response.forEach(element => {
-        this.separationData(element)
-       });
+        response.forEach(element => {
+          this.separationData(element)
+        });
       }
     )
-
-    // this.dataService.sidenav$.subscribe(
-    //   response => {
-    //     if (response == true) {
-    //       drawer.toggle()
-    //     }
-    //   }
-    // )
   }
   separationData(data) {
     if (data.task == 'todo') {
@@ -63,11 +62,20 @@ export class KanbanDashboardComponent implements OnInit {
     }
   }
 
-  reset(){
+  closeSideNave() {
+    this.togglebutton.nativeElement.click()
+  }
+
+  reset() {
     this.todo = [];
     this.done = [];
     this.development = [];
     this.testing = [];
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete
   }
 
 }
